@@ -2,11 +2,12 @@ package org.example.utils;
 
 import java.lang.reflect.Method;
 
+import org.example.base.BaseTest;
 import org.testng.annotations.DataProvider;
 
-import baseTest.BaseTest;
 
-public class DataUtils extends BaseTest{
+
+public class DataUtils extends BaseTest {
 	@DataProvider(name="data")
 	public Object[][] getData(Method m){
 				
