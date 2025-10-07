@@ -12,9 +12,6 @@ import org.testng.annotations.BeforeMethod;
 public class BaseTest {
     public ExcelReader excel = new ExcelReader("./src/main/resources/data/testData.xlsx");
     public static final Logger logger = LogManager.getLogger(BaseTest.class);
-
-
-
     @Description("Driver is loaded and navigate to app.vwo.com")
     @BeforeMethod
     public void setUp(ITestResult result){

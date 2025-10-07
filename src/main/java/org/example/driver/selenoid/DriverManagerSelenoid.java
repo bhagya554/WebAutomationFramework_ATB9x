@@ -1,5 +1,6 @@
-package org.example.driver;
+package org.example.driver.selenoid;
 
+import org.example.driver.DriverManager;
 import org.example.utils.PropertiesReader;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
@@ -15,7 +16,7 @@ import java.net.URL;
 import java.util.ArrayList;
 import java.util.HashMap;
 
-public class DriverManager {
+public class DriverManagerSelenoid {
     public static WebDriver driver;
 
     public static WebDriver getDriver() {
@@ -25,9 +26,10 @@ public class DriverManager {
     public static void setDriver(WebDriver driver) {
         DriverManager.driver = driver;
     }
+
     //when we want to start the browser
-    public static void init(){
-       String browser = PropertiesReader.readKey("browser").toLowerCase();
+    public static void init() {
+        String browser = PropertiesReader.readKey("browser").toLowerCase();
         if (driver == null) {
             switch (browser) {
                 case "chrome":
@@ -80,9 +82,8 @@ public class DriverManager {
 
                             /* How to enable video recording */
                             put("enableVideo", true);
-                            put("enableVNC", true);
                         }});
-                        driver = new RemoteWebDriver(new URL("http://localhost:4444/wd/hub"), options);
+                       driver = new RemoteWebDriver(new URL("http://localhost:4444/wd/hub"), options);
                     }
                     catch (MalformedURLException e){
                         throw new RuntimeException(e);
@@ -93,11 +94,10 @@ public class DriverManager {
     }
 
     //when we want to close the browser
-    public static void down(){
-        if(driver!=null){
+    public static void down() {
+        if (driver != null) {
             driver.quit();
-            driver=null;
+            driver = null;
         }
     }
-
 }
